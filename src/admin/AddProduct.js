@@ -6,7 +6,7 @@ import { isAutheticated } from "../auth/helper/index";
 
 const AddProduct = () => {
   const { user, token } = isAutheticated();
-
+  var formData = new FormData();
   const [values, setValues] = useState({
     name: "",
     description: "",
@@ -18,7 +18,8 @@ const AddProduct = () => {
     error: "",
     createdProduct: "",
     getaRedirect: false,
-    formData: ""
+    formData: "",
+    file: null,
   });
 
   const {
@@ -31,11 +32,11 @@ const AddProduct = () => {
     error,
     createdProduct,
     getaRedirect,
-    formData
+    file,
   } = values;
 
   const preload = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       //console.log(data);
       if (data.error) {
         setValues({ ...values, error: data.error });
@@ -49,11 +50,22 @@ const AddProduct = () => {
     preload();
   }, []);
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
+    console.log(name, description, file);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("file", file);
+    formData.append("category", category);
+    console.log(formData.getAll("file"));
+    for (var key of formData.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
     setValues({ ...values, error: "", loading: true });
-    createProduct(user._id, token, formData).then(data => {
-      if (data.error) {
+    createProduct(user._id, token, formData).then((data) => {
+      console.log("data", data);
+      if (data?.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
@@ -64,15 +76,15 @@ const AddProduct = () => {
           photo: "",
           stock: "",
           loading: false,
-          createdProduct: data.name
+          createdProduct: data.name,
+          file: null,
         });
       }
     });
   };
 
-  const handleChange = name => event => {
-    const value = name === "photo" ? event.target.files[0] : event.target.value;
-    formData.set(name, value);
+  const handleChange = (name) => (event) => {
+    const value = name === "file" ? event.target.files[0] : event.target.value;
     setValues({ ...values, [name]: value });
   };
 
@@ -91,10 +103,9 @@ const AddProduct = () => {
       <div className="form-group d-grid gap-2 p-2">
         <label className="btn btn-block btn-success">
           <input
-            onChange={handleChange("photo")}
+            onChange={handleChange("file")}
             type="file"
-            name="photo"
-            accept="image"
+            name="file"
             placeholder="choose a file"
           />
         </label>
@@ -142,13 +153,13 @@ const AddProduct = () => {
         </select>
       </div>
       <div className="d-grid gap-2 p-2">
-      <button
-        type="submit"
-        onClick={onSubmit}
-        className="btn btn-outline-success mb-3"
-      >
-        Create Product
-      </button>
+        <button
+          type="submit"
+          onClick={onSubmit}
+          className="btn btn-outline-success mb-3"
+        >
+          Create Product
+        </button>
       </div>
     </form>
   );
