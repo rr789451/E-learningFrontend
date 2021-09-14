@@ -55,7 +55,6 @@ const AddProduct = () => {
     console.log(name, description, file);
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("price", price);
     formData.append("file", file);
     formData.append("category", category);
     console.log(formData.getAll("file"));
@@ -72,7 +71,6 @@ const AddProduct = () => {
           ...values,
           name: "",
           description: "",
-          price: "",
           photo: "",
           stock: "",
           loading: false,
@@ -99,7 +97,7 @@ const AddProduct = () => {
 
   const createProductForm = () => (
     <form>
-      <span>Post photo</span>
+      <span>Post Video</span>
       <div className="form-group d-grid gap-2 p-2">
         <label className="btn btn-block btn-success">
           <input
@@ -126,15 +124,6 @@ const AddProduct = () => {
           className="form-control"
           placeholder="Description"
           value={description}
-        />
-      </div>
-      <div className="form-group p-2">
-        <input
-          onChange={handleChange("price")}
-          type="number"
-          className="form-control"
-          placeholder="Price"
-          value={price}
         />
       </div>
       <div className="form-group p-2">
@@ -166,7 +155,7 @@ const AddProduct = () => {
 
   return (
     <Base
-      title="Add a product here!"
+      title="Add a Course here!"
       description="Welcome to product creation section"
       className="container bg-info p-4"
     >

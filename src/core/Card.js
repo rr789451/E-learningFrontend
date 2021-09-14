@@ -9,10 +9,10 @@ const Card = ({ product }) => {
   return (
     <Link to={{ pathname: url, product: product }}>
       <div className="card text-white bg-dark border border-info ">
-        <div className="card-header lead">{cartTitle}</div>
+        <div className="card-header display-5">{cartTitle}</div>
         <div className="card-body">
           <img
-            src="https://pbs.twimg.com/profile_images/1304985167476523008/QNHrwL2q.jpg"
+            src="https://st2.depositphotos.com/1350793/8441/i/950/depositphotos_84416316-stock-photo-hand-pointing-to-online-course.jpg"
             alt="photo1"
             style={{ maxHeight: "100%", maxWidth: "100%" }}
             className="mb-3 rounded"

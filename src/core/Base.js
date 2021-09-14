@@ -18,13 +18,8 @@ const Base = ({
     </div>
     <footer className="footer bg-dark mt-auto py-3">
       <div className="container-fluid bg-success text-white text-center py-3">
-        <h4>You Can Also Request New Courses By Contacting Us!</h4>
-        <button className="btn btn-warning btn-lg">Contact Us</button>
-      </div>
-      <div className="container">
-        <span className="text-muted">
-          Created By MECS Students [1608-18-733-068, 1608-18-733-070, 1608-18-733-093]
-        </span>
+        <h4>
+          Created By MECS Students [1608-18-733-068, 1608-18-733-070, 1608-18-733-093]</h4>
       </div>
     </footer>
   </div>

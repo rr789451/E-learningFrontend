@@ -44,7 +44,7 @@ const Signup = () => {
       <div className="row">
         <div className="col-md-6 offset-sm-3 text-left">
           <form>
-            <div className="form-group">
+            <div className="form-group p-2">
               <label className="text-light">Name</label>
               <input
                 className="form-control"
@@ -53,7 +53,7 @@ const Signup = () => {
                 value={name}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group p-2">
               <label className="text-light">Email</label>
               <input
                 className="form-control"
@@ -63,7 +63,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group p-2">
               <label className="text-light">Password</label>
               <input
                 onChange={handleChange("password")}
@@ -72,9 +72,11 @@ const Signup = () => {
                 value={password}
               />
             </div>
+            <div className="d-grid gap-2 p-2">
             <button onClick={onSubmit} className="btn btn-success btn-block">
               Submit
             </button>
+            </div>
           </form>
         </div>
       </div>
@@ -89,7 +91,7 @@ const Signup = () => {
             className="alert alert-success"
             style={{ display: success ? "" : "none" }}
           >
-            New account was created successfully. Please
+            New account was created successfully. Please 
             <Link to="/signin">Login Here</Link>
           </div>
         </div>
@@ -117,7 +119,6 @@ const Signup = () => {
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
-      <p className="text-white text-center">{JSON.stringify(values)}</p>
     </Base>
   );
 };

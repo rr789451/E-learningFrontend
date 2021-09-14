@@ -108,7 +108,7 @@ const UpdateProduct = ({match}) => {
 
   const createProductForm = () => (
     <form>
-      <span>Post photo</span>
+      <span>Post Video</span>
       <div className="form-group d-grid gap-2 p-2">
         <label className="btn btn-block btn-success">
           <input
@@ -136,15 +136,6 @@ const UpdateProduct = ({match}) => {
           className="form-control"
           placeholder="Description"
           value={description}
-        />
-      </div>
-      <div className="form-group p-2">
-        <input
-          onChange={handleChange("price")}
-          type="number"
-          className="form-control"
-          placeholder="Price"
-          value={price}
         />
       </div>
       <div className="form-group p-2">
@@ -176,7 +167,7 @@ const UpdateProduct = ({match}) => {
 
   return (
     <Base
-      title="Add a product here!"
+      title="Update your Course"
       description="Welcome to product creation section"
       className="container bg-info p-4"
     >
